@@ -1,0 +1,14 @@
+{
+  "name": "Zoom Webhook Sample Node.js",
+  "description": "Receive Zoom Webhooks",
+  "repository": "https://github.com/zoom/webhook-sample-node.js",
+  "logo": "https://avatars1.githubusercontent.com/u/29114944?s=200&v=4",
+  "keywords": ["zoom", "webhook", "node.js", "express"],
+  "env": {
+    "ZOOM_WEBHOOK_VERIFICATION_TOKEN": {
+      "description": "Your Zoom Webhook Verification Token, found on your App's Features page",
+      "value": "",
+      "required": true
+    }
+  }
+}
