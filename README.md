@@ -31,8 +31,8 @@ In terminal, run the following command to clone the repo:
 1. Add the following code to the .env file, and insert your Webhook Verification Token found on the Features page in the Zoom App Marketplace:
 
    ```
-ZOOM_WEBHOOK_VERIFICATION_TOKEN=ZOOM_WEBHOOK_VERIFICATION_TOKEN_HERE
-```
+   ZOOM_WEBHOOK_VERIFICATION_TOKEN=ZOOM_WEBHOOK_VERIFICATION_TOKEN_HERE
+   ```
 
    ![Zoom Webhook Verification Token](https://s3.amazonaws.com/user-content.stoplight.io/32426/1635884356131 "Zoom Webhook Verification Token")
 
