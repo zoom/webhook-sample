@@ -2,7 +2,7 @@
 
 Use of this sample app is subject to our [Terms of Use](https://zoom.us/docs/en-us/zoom_api_license_and_tou.html).
 
-This is a Node.js / Express server that receives Zoom Platform and Video SDK Webhooks (HTTP POST requests).
+This is a Node.js / Express server that receives [Zoom Platform Webhooks](https://marketplace.zoom.us/docs/api-reference/webhook-reference) and [Zoom Video SDK Webhooks](https://marketplace.zoom.us/docs/api-reference/webhook-reference/video-sdk-events) .
 
 If you would like to skip these steps and just deploy the finished code to Heroku, click the Deploy to Heroku button. (You will still need to configure a few simple things, so skip to [Deployment](#deployment).)
 
