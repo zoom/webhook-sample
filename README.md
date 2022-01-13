@@ -107,13 +107,17 @@ In terminal, run the following command to clone the repo:
 
 ### Heroku
 
-If you used the Deploy to Heroku button, enter a name for your app on the page the button took you to (or leave it blank to have a name generated for you), and fill in the values for these,
+If you used the "Deploy to Heroku" button, fill in the blanks.
 
-- `ZOOM_WEBHOOK_VERIFICATION_TOKEN` (Your Zoom Webhook Verification Token, found on your App's Features page)
+1. Enter a name for your app on the page the button took you to (or leave it blank to have a name generated for you), and fill in the values for these:
 
-Then click "Deploy App".
+   - `ZOOM_WEBHOOK_VERIFICATION_TOKEN` (Your Zoom Webhook Verification Token, found on your App's Features page)
 
-Now you can use your deployed url Heroku provides as the Event notification endpoint URL.
+1. Then click "Deploy App".
+
+1. Now you can use your deployed url Heroku provides as the Event notification endpoint URL. Copy the Heroku https url from the "View" button. In your apps Event notification endpoint URL input, paste your Heroku https url. Remember to include `/webhook` path.
+
+   Example: `https://abc123.herokuapp.com/webhook`
 
 If you cloned this repo, use the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) to deploy your server.
 
@@ -133,11 +137,13 @@ If you cloned this repo, use the [Heroku CLI](https://devcenter.heroku.com/artic
 
    `$ git push origin heroku`
 
-1. Navigate to your app on the Heroku dashboard, click settings, and add your App's Webhook Verification Token in the Config Variables,
+1. Navigate to your app on the Heroku dashboard, click settings, and add your App's Webhook Verification Token in the Config Variables:
 
-- `ZOOM_WEBHOOK_VERIFICATION_TOKEN` (Your Zoom Webhook Verification Token, found on your App's Features page)
+   - `ZOOM_WEBHOOK_VERIFICATION_TOKEN` (Your Zoom Webhook Verification Token, found on your App's Features page)
 
-Now you can use your deployed url Heroku provides as the Event notification endpoint URL.
+1. Now you can use your deployed url Heroku provides as the Event notification endpoint URL. Copy the Heroku https url displayed in terminal. In your apps Event notification endpoint URL input, paste your Heroku https url. Remember to include `/webhook` path.
+
+   Example: `https://abc123.herokuapp.com/webhook`
 
 ### Other Server Hosting
 

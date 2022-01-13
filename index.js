@@ -7,6 +7,11 @@ const port = process.env.PORT || 4000
 
 app.use(bodyParser.json())
 
+app.get('/', (req, res) => {
+  res.status(200)
+  res.send(`Webhook Sample Node.js successfully running. Set this URL with the /webhook path as your apps Event notification endpoint URL. https://github.com/zoom/webhook-sample-node.js`)
+})
+
 app.post('/webhook', (req, res) => {
 
   console.log(req.body)
