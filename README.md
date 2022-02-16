@@ -34,7 +34,7 @@ In terminal, run the following command to clone the repo:
    ZOOM_WEBHOOK_VERIFICATION_TOKEN=ZOOM_WEBHOOK_VERIFICATION_TOKEN_HERE
    ```
 
-   ![Zoom Webhook Verification Token](https://s3.amazonaws.com/user-content.stoplight.io/32426/1635884356131 "Zoom Webhook Verification Token")
+   ![Zoom Webhook Verification Token](https://marketplace.zoom.us/docs/images/migrated/1635884356131.png "Zoom Webhook Verification Token")
 
 1. Save and close .env.
 
@@ -54,11 +54,11 @@ In terminal, run the following command to clone the repo:
 
    Example: `https://abc123.ngrok.io/webhook`
 
-   ![Zoom Webhook Configuration](https://s3.amazonaws.com/user-content.stoplight.io/32426/1635885688814 "Zoom Webhook Configuration")
+   ![Zoom Webhook Configuration](https://marketplace.zoom.us/docs/images/migrated/1635885688814.png "Zoom Webhook Configuration")
 
 1. Choose the events you'd like to subscribe to.
 
-   ![Zoom Webhook Events](https://s3.amazonaws.com/user-content.stoplight.io/32426/1635884395709 "Zoom Webhook Events")
+   ![Zoom Webhook Events](https://marketplace.zoom.us/docs/images/migrated/1635884395709.png "Zoom Webhook Events")
 
 1. Click "Save".
 
