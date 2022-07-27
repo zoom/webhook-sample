@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
+const crypto = require('crypto')
 
 const app = express()
 const port = process.env.PORT || 4000
@@ -14,22 +15,52 @@ app.get('/', (req, res) => {
 
 app.post('/webhook', (req, res) => {
 
+  var response
+
   console.log(req.body)
   console.log(req.headers)
 
-  if (req.headers.authorization === process.env.ZOOM_WEBHOOK_VERIFICATION_TOKEN) {
+  // create the message string
+  var message = `v0:${req.headers['x-zm-request-timestamp']}:${JSON.stringify(req.body)}`
+  console.log(message)
 
-    var response = { message: 'Authorized request to Webhook Sample Node.js.', status: 200 }
+  // hash the message string with your Webhook Secret Token and prepend the version semantic
+  var signature = `v0=${crypto.createHmac('sha256', process.env.ZOOM_WEBHOOK_SECRET_TOKEN).update(message).digest('hex')}`
+  console.log(signature)
 
-    console.log(response.message)
+  // you validating the request came from Zoom https://marketplace.zoom.us/docs/api-reference/webhook-reference#notification-structure
+  if (req.headers['x-zm-signature'] === signature) {
 
-    // business logic here, example make API request to Zoom or 3rd party
+    // Zoom validating you control the webhook endpoint https://marketplace.zoom.us/docs/api-reference/webhook-reference#validate-webhook-endpoint
+    if(req.body.event === 'endpoint.url_validation') {
+      var hash = crypto.createHmac('sha256', process.env.ZOOM_WEBHOOK_SECRET_TOKEN).update(req.body.payload.plainToken).digest('hex')
 
-    res.status(response.status)
-    res.json(response)
+      response = {
+        message: {
+          plainToken: req.body.payload.plainToken,
+          encryptedToken: hash
+        },
+        status: 200
+      }
+
+      console.log(response.message)
+
+      res.status(response.status)
+      res.json(response.message)
+    } else {
+      response = { message: 'Authorized request to Webhook Sample Node.js.', status: 200 }
+
+      console.log(response.message)
+
+      res.status(response.status)
+      res.json(response)
+
+      // business logic here, example make API request to Zoom or 3rd party
+
+    }
   } else {
 
-    var response = { message: 'Unauthorized request to Webhook Sample Node.js.', status: 200 }
+    response = { message: 'Unauthorized request to Webhook Sample Node.js.', status: 200 }
 
     console.log(response.message)
 
