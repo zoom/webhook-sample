@@ -20,25 +20,25 @@ app.post('/webhook', (req, res) => {
   console.log(req.body)
   console.log(req.headers)
 
-  // create the message string
-  var message = `v0:${req.headers['x-zm-request-timestamp']}:${JSON.stringify(req.body)}`
-  console.log(message)
+  // construct the message string
+  const message = `v0:${req.headers['x-zm-request-timestamp']}:${JSON.stringify(req.body)}`
+
+  const hashForVerify = crypto.createHmac('sha256', process.env.ZOOM_WEBHOOK_SECRET_TOKEN).update(message).digest('hex')
 
   // hash the message string with your Webhook Secret Token and prepend the version semantic
-  var signature = `v0=${crypto.createHmac('sha256', process.env.ZOOM_WEBHOOK_SECRET_TOKEN).update(message).digest('hex')}`
-  console.log(signature)
+  const signature = `v0=${hashForVerify}`
 
   // you validating the request came from Zoom https://marketplace.zoom.us/docs/api-reference/webhook-reference#notification-structure
   if (req.headers['x-zm-signature'] === signature) {
 
     // Zoom validating you control the webhook endpoint https://marketplace.zoom.us/docs/api-reference/webhook-reference#validate-webhook-endpoint
     if(req.body.event === 'endpoint.url_validation') {
-      var hash = crypto.createHmac('sha256', process.env.ZOOM_WEBHOOK_SECRET_TOKEN).update(req.body.payload.plainToken).digest('hex')
+      const hashForValidate = crypto.createHmac('sha256', process.env.ZOOM_WEBHOOK_SECRET_TOKEN).update(req.body.payload.plainToken).digest('hex')
 
       response = {
         message: {
           plainToken: req.body.payload.plainToken,
-          encryptedToken: hash
+          encryptedToken: hashForValidate
         },
         status: 200
       }

@@ -2,6 +2,12 @@
 
 Use of this sample app is subject to our [Terms of Use](https://zoom.us/docs/en-us/zoom_api_license_and_tou.html).
 
+---
+
+**NOTE:** This Sample App has been updated to use the [Webhook Secret Token](https://marketplace.zoom.us/docs/api-reference/webhook-reference#verify-webhook-events) instead of the [Webhook Verification Token](https://marketplace.zoom.us/docs/api-reference/webhook-reference#verify-webhook-events) to validate requests are sent from Zoom.
+
+---
+
 This is a Node.js / Express server that receives [Zoom Platform Webhooks](https://marketplace.zoom.us/docs/api-reference/webhook-reference) and [Zoom Video SDK Webhooks](https://marketplace.zoom.us/docs/api-reference/webhook-reference/video-sdk-events) .
 
 If you would like to skip these steps and just deploy the finished code to Heroku, click the Deploy to Heroku button. (You will still need to configure a few simple things, so skip to [Deployment](#deployment).)
@@ -24,17 +30,19 @@ In terminal, run the following command to clone the repo:
 
    `$ npm install`
 
-1. Create an environment file to store your Video SDK Apps's Key and Secret:
+1. Create an environment file to store your Webhook Secret Token:
 
    `$ touch .env`
 
-1. Add the following code to the .env file, and insert your Webhook Verification Token found on the Features page in the Zoom App Marketplace:
+1. Add the following code to the .env file, and insert your Webhook Secret Token found on the Features page in the Zoom App Marketplace:
 
    ```
-   ZOOM_WEBHOOK_VERIFICATION_TOKEN=ZOOM_WEBHOOK_VERIFICATION_TOKEN_HERE
+   ZOOM_WEBHOOK_SECRET_TOKEN=ZOOM_WEBHOOK_SECRET_TOKEN_HERE
    ```
 
-   ![Zoom Webhook Verification Token](https://marketplace.zoom.us/docs/images/migrated/1635884356131.png "Zoom Webhook Verification Token")
+   ![Zoom Webhook Secret Token](https://marketplace.zoom.us/docs/images/marketplace/webhook-secret-token.png "Zoom Webhook Secret Token")
+
+   > The Webhook Secret Token allows you to [verify webhook requests come from Zoom](https://marketplace.zoom.us/docs/api-reference/webhook-reference#verify-webhook-events) and for Zoom to [validate that you control your webhook endpoint](https://marketplace.zoom.us/docs/api-reference/webhook-reference#validate-your-webhook-endpoint).
 
 1. Save and close .env.
 
@@ -54,7 +62,7 @@ In terminal, run the following command to clone the repo:
 
    Example: `https://abc123.ngrok.io/webhook`
 
-   ![Zoom Webhook Configuration](https://marketplace.zoom.us/docs/images/migrated/1635885688814.png "Zoom Webhook Configuration")
+   ![Zoom Webhook Configuration](https://marketplace.zoom.us/docs/images/marketplace/webhook-expanded.png "Zoom Webhook Configuration")
 
 1. Choose the events you'd like to subscribe to.
 
@@ -68,38 +76,40 @@ In terminal, run the following command to clone the repo:
 
    For example, if you chose the [Start Meeting Webhook](https://marketplace.zoom.us/docs/api-reference/webhook-reference/meeting-events/meeting-started), start a Zoom Meeting. You will see the Webhook headers and payload logged in terminal.
 
-   ```js
+   ```json
    {
-     'host': 'abc123.ngrok.io',
-     'user-agent': 'Zoom Marketplace/1.0a',
-     'content-length': '335',
-     'authorization': '{webhook_verification_token}',
-     'clientid': '{client_id}',
-     'content-type': 'application/json; charset=utf-8',
-     'x-forwarded-for': '{x_forwarded_for}',
-     'x-forwarded-proto': 'https',
-     'x-zm-trackingid': '{x_zm-trackingid}',
-     'accept-encoding': 'gzip'
+     "host": "abc123.ngrok.io",
+     "user-agent": "Zoom Marketplace/1.0a",
+     "content-length": "335",
+     "authorization": "{LEGACY_WEBHOOK_VERIFICATION_TOKEN}",
+     "clientid": "{CLIENT_ID}",
+     "content-type": "application/json; charset=utf-8",
+     "x-forwarded-for": "{X_FORWARDED_FOR}",
+     "x-forwarded-proto": "https",
+     "x-zm-request-timestamp": "X_ZM_REQUEST_TIMESTAMP",
+     "x-zm-signature": "v0={HASHED_WEBHOOK_SECRET_TOKEN}",
+     "x-zm-trackingid": "{X_ZM_TRACKINGID}",
+     "accept-encoding": "gzip"
    }
    ```
 
-   ```js
+   ```json
    {
-     event: 'meeting.started',
-     payload: {
-       account_id: '{account_id}',
-       object: {
-         duration: 0,
-         start_time: '2021-11-02T20:43:19Z',
-         timezone: 'America/Denver',
-         topic: "{topic}",
-         id: '{meeting_id}',
-         type: 4,
-         uuid: '{meeting_uuid}',
-         host_id: '{host_user_id}'
+     "event": "meeting.started",
+     "payload": {
+       "account_id": "{ACCOUNT_ID}",
+       "object": {
+         "duration": 0,
+         "start_time": "2021-11-02T20:43:19Z",
+         "timezone": "America/Denver",
+         "topic": "{TOPIC}",
+         "id": "{MEETING_ID}",
+         "type": 4,
+         "uuid": "{MEETING_UUID}",
+         "host_id": "{HOST_ID}"
        }
      },
-     event_ts: 1635885799302
+     "event_ts": 1635885799302
    }
    ```
 
@@ -111,7 +121,7 @@ If you used the "Deploy to Heroku" button, fill in the blanks.
 
 1. Enter a name for your app on the page the button took you to (or leave it blank to have a name generated for you), and fill in the values for these:
 
-   - `ZOOM_WEBHOOK_VERIFICATION_TOKEN` (Your Zoom Webhook Verification Token, found on your App's Features page)
+   - `ZOOM_WEBHOOK_SECRET_TOKEN` (Your Zoom Webhook Secret Token, found on your App's Features page)
 
 1. Then click "Deploy App".
 
@@ -137,9 +147,9 @@ If you cloned this repo, use the [Heroku CLI](https://devcenter.heroku.com/artic
 
    `$ git push origin heroku`
 
-1. Navigate to your app on the Heroku dashboard, click settings, and add your App's Webhook Verification Token in the Config Variables:
+1. Navigate to your app on the Heroku dashboard, click settings, and add your App's Webhook Secret Token in the Config Variables:
 
-   - `ZOOM_WEBHOOK_VERIFICATION_TOKEN` (Your Zoom Webhook Verification Token, found on your App's Features page)
+   - `ZOOM_WEBHOOK_SECRET_TOKEN` (Your Zoom Webhook Secret Token, found on your App's Features page)
 
 1. Now you can use your deployed url Heroku provides as the Event notification endpoint URL. Copy the Heroku https url displayed in terminal. In your apps Event notification endpoint URL input, paste your Heroku https url. Remember to include `/webhook` path.
 
