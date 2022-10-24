@@ -40,7 +40,7 @@ In terminal, run the following command to clone the repo:
    ZOOM_WEBHOOK_SECRET_TOKEN=ZOOM_WEBHOOK_SECRET_TOKEN_HERE
    ```
 
-   ![Zoom Webhook Secret Token](https://marketplace.zoom.us/docs/images/marketplace/webhook-secret-token.png "Zoom Webhook Secret Token")
+   ![Zoom Webhook Secret Token](https://marketplace.zoom.us/docs/static/5904bf228eeccd72a1aa584b1d5aad99/86cdf/webhook-secret-token.webp "Zoom Webhook Secret Token")
 
    > The Webhook Secret Token allows you to [verify webhook requests come from Zoom](https://marketplace.zoom.us/docs/api-reference/webhook-reference#verify-webhook-events) and for Zoom to [validate that you control your webhook endpoint](https://marketplace.zoom.us/docs/api-reference/webhook-reference#validate-your-webhook-endpoint).
 
@@ -62,7 +62,7 @@ In terminal, run the following command to clone the repo:
 
    Example: `https://abc123.ngrok.io/webhook`
 
-   ![Zoom Webhook Configuration](https://marketplace.zoom.us/docs/images/marketplace/webhook-expanded.png "Zoom Webhook Configuration")
+   ![Zoom Webhook Configuration](https://marketplace.zoom.us/docs/static/ade497917ecd1e5b65920729ad3f99be/3f94e/webhook-validate.webp "Zoom Webhook Configuration")
 
 1. Choose the events you'd like to subscribe to.
 
