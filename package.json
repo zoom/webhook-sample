@@ -2,12 +2,17 @@
   "name": "webhook-sample-node.js",
   "version": "2.0.0",
   "description": "Receive Zoom Webhooks",
+  "author": "Zoom Video Communications, Inc.",
+  "contributors": [
+    {
+      "name": "Tommy Gaessler"
+    }
+  ],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
-  "author": "Tommy Gaessler",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
