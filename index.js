@@ -70,3 +70,5 @@ app.post('/webhook', (req, res) => {
 })
 
 app.listen(port, () => console.log(`Webhook Sample Node.js listening on port ${port}!`))
+
+module.exports = app
