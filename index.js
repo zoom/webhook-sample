@@ -10,15 +10,15 @@ app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
   res.status(200)
-  res.send(`Webhook Sample Node.js successfully running. Set this URL with the /webhook path as your apps Event notification endpoint URL. https://github.com/zoom/webhook-sample-node.js`)
+  res.send(`Zoom Webhook sample successfully running. Set this URL with the /webhook path as your apps Event notification endpoint URL. https://github.com/zoom/webhook-sample`)
 })
 
 app.post('/webhook', (req, res) => {
 
   var response
 
-  console.log(req.body)
   console.log(req.headers)
+  console.log(req.body)
 
   // construct the message string
   const message = `v0:${req.headers['x-zm-request-timestamp']}:${JSON.stringify(req.body)}`
@@ -48,7 +48,7 @@ app.post('/webhook', (req, res) => {
       res.status(response.status)
       res.json(response.message)
     } else {
-      response = { message: 'Authorized request to Webhook Sample Node.js.', status: 200 }
+      response = { message: 'Authorized request to Zoom Webhook sample.', status: 200 }
 
       console.log(response.message)
 
@@ -60,7 +60,7 @@ app.post('/webhook', (req, res) => {
     }
   } else {
 
-    response = { message: 'Unauthorized request to Webhook Sample Node.js.', status: 401 }
+    response = { message: 'Unauthorized request to Zoom Webhook sample.', status: 401 }
 
     console.log(response.message)
 
@@ -69,4 +69,4 @@ app.post('/webhook', (req, res) => {
   }
 })
 
-app.listen(port, () => console.log(`Webhook Sample Node.js listening on port ${port}!`))
+app.listen(port, () => console.log(`Zoom Webhook sample listening on port ${port}!`))

@@ -1,7 +1,7 @@
 {
-  "name": "webhook-sample-node.js",
+  "name": "webhook-sample",
   "version": "2.0.0",
-  "description": "Receive Zoom Webhooks",
+  "description": "Receive Zoom webhooks.",
   "author": "Zoom Video Communications, Inc.",
   "contributors": [
     {

@@ -1,6 +1,6 @@
 {
-  "name": "Zoom Webhook Sample Node.js",
-  "description": "Receive Zoom Webhooks",
+  "name": "Zoom Webhook sample",
+  "description": "Receive Zoom webhooks.",
   "repository": "https://github.com/zoom/webhook-sample-node.js",
   "logo": "https://avatars1.githubusercontent.com/u/29114944?s=200&v=4",
   "keywords": ["zoom", "webhook", "node.js", "express"],
