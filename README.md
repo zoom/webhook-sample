@@ -159,6 +159,8 @@ If you cloned this repo, use the [Heroku CLI](https://devcenter.heroku.com/artic
 
 For Other Server Hosting information, see [this tutorial](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/deployment#choosing_a_hosting_provider).
 
+Now you are ready to [receive Zoom webhooks](#usage).
+
 ## Need help?
 
 If you're looking for help, try [Developer Support](https://devsupport.zoom.us)   or our [Developer Forum](https://devforum.zoom.us). Priority support is also available with [Premier Developer Support](https://explore.zoom.us/docs/en-us/developer-support-plans.html) plans.
