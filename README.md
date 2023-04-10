@@ -34,7 +34,7 @@ In terminal, run the following command to clone the repo:
 
    `$ touch .env`
 
-1. Add the following code to the .env file, and insert your Webhook Secret Token found on the Features page in the Zoom App Marketplace:
+1. Add the following code to the .env file, and insert your [Zoom Webhook Secret Token](https://developers.zoom.us/docs/api/rest/webhook-reference/#verify-webhook-events):
 
    ```
    ZOOM_WEBHOOK_SECRET_TOKEN=ZOOM_WEBHOOK_SECRET_TOKEN_HERE
@@ -58,9 +58,11 @@ In terminal, run the following command to clone the repo:
 
    > NOTE: [I've put ngrok in my PATH so I can call it globally.](https://stackoverflow.com/a/36759493/6592510)
 
-1. Copy the ngrok https url displayed in terminal. In your apps Event notification endpoint URL input, paste your ngrok https url. Remember to include `/webhook` path. Then click "Validate".
+1. Copy the ngrok https url and paste it in the Bot endpoint URL input on your Zoom App's Features section. Remember to include `/webhook` path.
 
    Example: `https://abc123.ngrok.io/webhook`
+
+1. Click "Validate".
 
    ![Zoom Webhook Configuration](https://developers.zoom.us/img/nextImageExportOptimizer/webhook-validate-opt-640.WEBP "Zoom Webhook Configuration")
 
@@ -115,49 +117,33 @@ In terminal, run the following command to clone the repo:
 
 ## Deployment
 
-### Heroku
+### Heroku (button)
 
-If you used the "Deploy to Heroku" button, fill in the blanks.
-
-1. Enter a name for your app on the page the button took you to (or leave it blank to have a name generated for you), and fill in the values for these:
+1. After clicking the "Deploy to Heroku" button, enter a name for your app (or leave it blank to have a name generated for you), and insert your [Zoom Webhook Secret Token](https://developers.zoom.us/docs/api/rest/webhook-reference/#verify-webhook-events):
 
    - `ZOOM_WEBHOOK_SECRET_TOKEN` (Your Zoom Webhook Secret Token, found on your App's Features page)
 
 1. Then click "Deploy App".
 
-1. Now you can use your deployed url Heroku provides as the Event notification endpoint URL. Copy the Heroku https url from the "View" button. In your apps Event notification endpoint URL input, paste your Heroku https url. Remember to include `/webhook` path.
+1. Copy the Heroku url and paste it in the Event notification endpoint URL input on your Zoom App's Features section. Remember to include `/webhook` path.
 
    Example: `https://abc123.herokuapp.com/webhook`
 
-If you cloned this repo, use the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) to deploy your server.
+### Heroku (CLI)
 
-1. In terminal, create a Heroku app:
+1. If you cloned this repo, you may use the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) to deploy your server. Remember to [set your config vars (envoirnment variables)](https://devcenter.heroku.com/articles/config-vars).
 
-   `$ heroku create`
-
-1. Add your files:
-
-   `$ git add -A`
-
-1. Commit your files:
-
-   `$ git commit -m "deploying to heroku"`
-
-1. Deploy your server by pushing your files to Heroku:
-
-   `$ git push origin heroku`
-
-1. Navigate to your app on the Heroku dashboard, click settings, and add your App's Webhook Secret Token in the Config Variables:
-
-   - `ZOOM_WEBHOOK_SECRET_TOKEN` (Your Zoom Webhook Secret Token, found on your App's Features page)
-
-1. Now you can use your deployed url Heroku provides as the Event notification endpoint URL. Copy the Heroku https url displayed in terminal. In your apps Event notification endpoint URL input, paste your Heroku https url. Remember to include `/webhook` path.
+1. Copy the Heroku url and paste it in the Event notification endpoint URL input on your Zoom App's Features section. Remember to include `/webhook` path.
 
    Example: `https://abc123.herokuapp.com/webhook`
 
 ### Other Server Hosting
 
-For Other Server Hosting information, see [this tutorial](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/deployment#choosing_a_hosting_provider).
+1. For Other Server Hosting information, see [this tutorial](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/deployment#choosing_a_hosting_provider).
+
+1. Copy the deployed url and paste it in the Event notification endpoint URL input on your Zoom App's Features section. Remember to include `/webhook` path.
+
+   Example: `https://abc123.compute-1.amazonaws.com/webhook`
 
 Now you are ready to [receive Zoom webhooks](#usage).
 
