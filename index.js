@@ -20,6 +20,8 @@ app.post('/webhook', (req, res) => {
   console.log(req.headers)
   console.log(req.body)
 
+  // TODO: implement timestamp validation, preventing replay attacks
+  // Something like if(req.headers['x-zm-request-timestamp'] < time.now() - 5min) { NOPE } 
   // construct the message string
   const message = `v0:${req.headers['x-zm-request-timestamp']}:${JSON.stringify(req.body)}`
 
