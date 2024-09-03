@@ -10,9 +10,12 @@ Use of this sample app is subject to our [Terms of Use](https://explore.zoom.us/
 
 This is a Node.js / Express server that receives [Zoom Platform Webhooks](https://developers.zoom.us/docs/api/rest/webhook-reference/#enable-webhooks) and [Zoom Video SDK Webhooks](https://developers.zoom.us/docs/api/rest/webhook-reference/#enable-webhooks).
 
-If you would like to skip these steps and just deploy the finished code to Heroku, click the Deploy to Heroku button. (You will still need to configure a few simple things, so skip to [Deployment](#deployment).)
+If you would like to skip these steps and just deploy the finished code to a managed service, click the Deploy to Railway/Render/Heroku button. (You will still need to configure a few simple things, so skip to [Deployment](#deployment).)
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/zoom/webhook-sample)
+| Railway | Render | Heroku |
+|:-:|:-:|:-:|
+| [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/ERSEbO?referralCode=HTPdHX) | [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/zoom/webhook-sample) | [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/zoom/webhook-sample) | 
+
 
 ## Installation
 
@@ -117,25 +120,25 @@ In terminal, run the following command to clone the repo:
 
 ## Deployment
 
-### Heroku (button)
+### Deploy to a Managed Service
 
-1. After clicking the "Deploy to Heroku" button, enter a name for your app (or leave it blank to have a name generated for you), and insert your [Zoom Webhook Secret Token](https://developers.zoom.us/docs/api/rest/webhook-reference/#verify-webhook-events):
+1. After clicking the "Deploy to <Provider\>" button, enter a name for your app (or leave it blank to have a name generated for you), and insert your [Zoom Webhook Secret Token](https://developers.zoom.us/docs/api/rest/webhook-reference/#verify-webhook-events):
 
    - `ZOOM_WEBHOOK_SECRET_TOKEN` (Your Zoom Webhook Secret Token, found on your App's Features page)
 
 1. Then click "Deploy App".
 
-1. Copy the Heroku url and paste it in the Event notification endpoint URL input on your Zoom App's Features section. Remember to include `/webhook` path.
+1. Copy the url and paste it in the Event notification endpoint URL input on your Zoom App's Features section. Remember to include `/webhook` path.
 
-   Example: `https://abc123.herokuapp.com/webhook`
+   Example: `https://abc123.provider.com/webhook`
 
-### Heroku (CLI)
+<!-- ### Heroku (CLI)
 
 1. If you cloned this repo, you may use the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) to deploy your server. Remember to [set your config vars (envoirnment variables)](https://devcenter.heroku.com/articles/config-vars).
 
 1. Copy the Heroku url and paste it in the Event notification endpoint URL input on your Zoom App's Features section. Remember to include `/webhook` path.
 
-   Example: `https://abc123.herokuapp.com/webhook`
+   Example: `https://abc123.herokuapp.com/webhook` -->
 
 ### Other Server Hosting
 
@@ -149,4 +152,4 @@ Now you are ready to [receive Zoom webhooks](#usage).
 
 ## Need help?
 
-If you're looking for help, try [Developer Support](https://devsupport.zoom.us)   or our [Developer Forum](https://devforum.zoom.us). Priority support is also available with [Premier Developer Support](https://explore.zoom.us/docs/en-us/developer-support-plans.html) plans.
+If you're looking for help, try [Developer Support](https://devsupport.zoom.us) or our [Developer Forum](https://devforum.zoom.us). Priority support is also available with [Premier Developer Support](https://explore.zoom.us/docs/en-us/developer-support-plans.html) plans.
