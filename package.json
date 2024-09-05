@@ -6,6 +6,9 @@
   "contributors": [
     {
       "name": "Tommy Gaessler"
+    },
+    {
+      "name": "EkaanshArora"
     }
   ],
   "main": "index.js",
