@@ -4,7 +4,7 @@ services:
     runtime: node
     buildCommand: npm install
     startCommand: npm start
-    repo: https://github.com/zoom/videosdk-auth-endpoint-sample
+    repo: https://github.com/zoom/webhook-sample
     rootDir: .
     plan: free
     envVars:
